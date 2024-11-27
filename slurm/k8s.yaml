@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: slurm-bash 
+  labels:
+    app: slurm-bash
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: slurm
+  template:
+    metadata:
+      labels:
+        app: slurm 
+    spec:
+      containers:
+      - name: slurm-bash
+        image: johan/slurm
+        securityContext:
+          privileged: true
